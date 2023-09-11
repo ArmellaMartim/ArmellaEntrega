@@ -2,6 +2,7 @@ import express from 'express';
 import { fileURLToPath} from 'url';
 import path, { dirname } from 'path';
 import { createRequire } from 'module';
+import { productsRouter } from './routes/products';
 
 const app = express();
 app.use('/static', express.static(path.join(__dirname, 'public')));
