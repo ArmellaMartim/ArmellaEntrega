@@ -11,12 +11,12 @@ router.use(express.urlencoded({extended: true}));
 let products = [];
 let nextProductId = 1;
 
-router.get('/api/product', (req, res) => {
+router.get('/api/products', (req, res) => {
     res.send(products);
 });
 
 
-router.post('/api/product', uploader.array('file'), (req, res) => {
+router.post('/api/products', uploader.array('file'), (req, res) => {
     const product = req.body;
     if (!product.title || !product.description || !product.price || !product.price || !product.code || !product.stock || !product.category){
         return res.status(400).send({ status: "error", error: "Valores incompletos" });
@@ -30,11 +30,11 @@ router.post('/api/product', uploader.array('file'), (req, res) => {
     res.send({ status: "success", message: "Producto creado" });
 });
 
-router.put('/api/product/:id', (req, res) => {
+router.put('/api/products/:id', (req, res) => {
     const productId = parseInt(req.params.id);
     const updatedProduct = req.body;
 
-    if (!updatedProduct.title || !updatedProduct.description || !updatedProduct.price || !updatedProduct.code || !updatedProduct.stock || !updatedProduct.category ||) {
+    if (!updatedProduct.title || !updatedProduct.description || !updatedProduct.price || !updatedProduct.code || !updatedProduct.stock || !updatedProduct.category ){
         return res.status(400).send({ status: "error", error: "Valores incompletos" });
     }
 
